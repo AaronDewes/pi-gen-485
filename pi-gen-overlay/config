@@ -1,0 +1,7 @@
+IMG_NAME=HelloExample
+RELEASE=buster
+#
+
+TIMEZONE_DEFAULT=UTC
+ENABLE_SSH=1
+
