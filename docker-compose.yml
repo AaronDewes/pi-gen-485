@@ -1,0 +1,19 @@
+version: '3.3'
+
+networks:
+  apt-net:
+    driver: bridge
+    ipam: 
+      config: 
+        - subnet: 172.20.4.0/24
+
+services:
+  docker:
+    image: debian:buster
+    container_name: debian
+    volumes:
+      - /home/claude/example:/mnt/example
+    networks:
+      apt-net:
+        ipv4_address: 172.20.4.3
+

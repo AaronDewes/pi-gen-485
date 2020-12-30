@@ -17,6 +17,7 @@ docker run -it -v ${WORKING}:/mnt/example -w /mnt/example --name hello_builder h
 
 ## create a apt repository
 mkdir -p ${WORKING}/repo
+rm -rf ${WORKING}/repo
 mv -f *.deb ${WORKING}/repo
 
 ## start apt server
@@ -32,6 +33,7 @@ export APT_IP=`docker exec -t apt_server bash -c "ip add | grep global | cut -f6
 
 git clone --single-branch --depth 1 https://github.com/RPi-Distro/pi-gen.git
 cp -r pi-gen-overlay/* pi-gen/*
+echo "deb [trusted=yes] http://${APT_IP}/repo /" > /pi-gen/stage3/02-configure-apt/files
 
 
 
