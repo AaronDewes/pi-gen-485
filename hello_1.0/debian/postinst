@@ -20,6 +20,8 @@ set -e
 
 case "$1" in
     configure)
+	dkms build hello/1.0
+        dkms install hello/1.0
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)

@@ -16,8 +16,6 @@ set -e
 
 case "$1" in
     install|upgrade)
-	dkms build hello/1.0
-        dkms install hello/1.0
     ;;
 
     abort-upgrade)
