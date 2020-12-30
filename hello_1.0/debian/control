@@ -1,0 +1,12 @@
+Source: hello
+Section: unknown
+Priority: optional
+Maintainer: Claude N. Warren, Jr. <claude@xenei.com>
+Build-Depends: debhelper (>= 11)
+Standards-Version: 4.1.3
+
+Package: hello
+Architecture: any
+Depends: dkms, ${misc:Depends}, raspberrypi-kernel-headers, udev
+Description: Examlpe hellow world with dkms build
+  
