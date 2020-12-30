@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 ## create a debian package for the hello example 
 

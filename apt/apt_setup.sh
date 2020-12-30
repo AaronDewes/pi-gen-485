@@ -6,4 +6,6 @@ apt-ftparchive packages . > Packages
 gzip -k -f Packages 
 apt-ftparchive release . > Release
 
+chmod ugo+rw *
+chmod ugo+rwx .
 
