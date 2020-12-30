@@ -1,0 +1,8 @@
+hello_1.0-1_all.deb
+hello_1.0/*.cmd
+hello_1.0/Module.symvers
+hello_1.0/hello.ko
+hello_1.0/hello.mod*
+hello_1.0/*.o
+hello_1.0/modules.order
+

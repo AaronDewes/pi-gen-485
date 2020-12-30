@@ -1,9 +1,18 @@
 
-.PHONY:  install
+ifneq ($(KERNELRELEASE),)
+	obj-m := hello.o
+	hello := hello.o
 
+else
+	KERNELDIR ?= /lib/modules/$(shell uname -r)/build
+	PWD := $(shell pwd)
+
+default:
+	$(MAKE) -C $(KERNELDIR) M=$(PWD) modules
+
+clean:
+	$(MAKE) -C $(KERNELDIR) M=$(PWD) clean
+
+endif
 	
-install: 
-	install -d $(DESTDIR)/usr
-	for fn in `find scripts/usr -type d | sed 's+scripts/usr++g'`; do install -m 755 -d $(DESTDIR)/usr$$fn; done
-	for fn in `find scripts/usr -type f | sed 's+scripts/usr++g'`; do install -m 644 scripts/usr$$fn $(DESTDIR)/usr$$fn; done
 
