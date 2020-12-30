@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 WORKING="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
@@ -27,13 +27,14 @@ docker build -t apt_server ${WORKING}/apt
 docker run -itd -v ${WORKING}/repo:/usr/local/apache2/htdocs/repo -v ${WORKING}/apt:/mnt/apt -w /mnt/apt --name apt_server apt_server 
 
 ## get the IP for the apt server
-export APT_IP=`docker exec -t apt_server bash -c "ip add | grep global | cut -f6 -d' ' | cut -f1 -d'/'"`
+export APT_IP=`docker exec -t apt_server bash -c "ip add | grep global | cut -f6 -d' ' | cut -f1 -d'/' " | tr -d '\r'` 
 
 ## clone pi-gen
-
+cd ${WORKING}
 git clone --single-branch --depth 1 https://github.com/RPi-Distro/pi-gen.git
-cp -r pi-gen-overlay/* pi-gen/*
-echo "deb [trusted=yes] http://${APT_IP}/repo /" > /pi-gen/stage3/02-configure-apt/files
+rsync -rv pi-gen-overlay/* pi-gen
+
+echo "deb [trusted=yes] http://${APT_IP}/repo /" > pi-gen/stage3/02-configure-apt/files/hello.list
 
 
 
