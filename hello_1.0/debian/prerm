@@ -19,9 +19,7 @@ set -e
 
 case "$1" in
     remove)
-        set +e
-	dkms remove hello/1.0 --all
-        set -e
+	dkms remove hello/1.0
     ;;
 
     upgrade|deconfigure)
