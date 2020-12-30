@@ -10,6 +10,6 @@ Homepage: <insert the upstream URL, if relevant>
 
 Package: hello
 Architecture: all
-Depends: ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Depends: ${misc:Depends}, dkms
+#, raspberrypi-kernel-headers
+Description: Example kernel build with dkms
