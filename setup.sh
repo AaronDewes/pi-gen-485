@@ -6,7 +6,7 @@ WORKING="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 # Check the arch of the machine we're running on. If it's 64-bit, use a 32-bit base image instead
 echo "Building the hello debian package"
 case "$(uname -m)" in
-  x86_64|aarch64)
+  x86_64)
     BASE_IMAGE=i386/debian:buster
     ;;
   *)
