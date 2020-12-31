@@ -32,16 +32,11 @@ docker run -itd -v ${WORKING}/repo:/usr/local/apache2/htdocs/repo -v ${WORKING}/
 export APT_IP=`docker exec -t apt_server bash -c "ip add | grep global | cut -f6 -d' ' | cut -f1 -d'/' " | tr -d '\r'` 
 echo "apt server on ${APT_IP}"
 
-
 ## clone pi-gen
 echo "Cloning and adding overlay to pi-gen"
 cd ${WORKING}
-git clone --single-branch --depth 1 https://github.com/RPi-Distro/pi-gen.git
+git clone --single-branch --depth 1 https://github.com/AaronDewes/pi-gen.git
 rsync -rv pi-gen-overlay/* pi-gen
 echo "deb [trusted=yes] http://${APT_IP}/repo /" > pi-gen/stage3/02-configure-apt/files/hello.list
 
 echo "Ready for pi-gen build"
-
-
-
-
